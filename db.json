@@ -47,6 +47,21 @@
       "name": "Little Green Men",
       "image": "http://www.pngmart.com/files/3/Toy-Story-Alien-PNG-File.png",
       "likes": -2
+    },
+    {
+      "name": "TEST",
+      "image": "image url",
+      "id": 9
+    },
+    {
+      "name": "SECOND TEST",
+      "image": "http://www.pngmart.com/files/3/Toy-Story-Woody-PNG-Photos.png",
+      "id": 10
+    },
+    {
+      "name": "Austin",
+      "image": "http://www.pngmart.com/files/6/Buzz-Lightyear-PNG-Transparent-Picture.png ",
+      "id": 11
     }
   ]
 }
