@@ -15,13 +15,38 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   getToys();
+
 });
 
 
+
 const toyForm = document.querySelector('.add-toy-form')
-console.log(toyForm)
 toyForm.addEventListener('submit', submitToy)
 
+
+// WHY DOES IT RETURN AN EMPTY NODE LIST IF I AM EXECUTING IT AFTER DOM CONTENT LOADED
+// had to move it to after fetch request was made to get all of the toys that will be rendered!!!
+
+function addLikeListeners(){
+  let toyCards = document.querySelectorAll('.card')
+  toyCards.forEach(card => {
+    card.lastElementChild.addEventListener('click', like)
+  });
+}
+
+// ONLY WORKS WHEN REFRESHING PAGE WHY??
+// when adding a new toy the data-id appears with a space and as an integer? but after refreshing it appears normally
+
+// <div class="card  data-id= " 10">
+//         <h2>Charlie</h2>
+//         <img src="http://www.pngmart.com/files/6/Buzz-Lightyear-PNG-Transparent-Picture.png " class="toy-avatar">
+//         <p> Likes: 0 </p>
+//         <button class="like-btn">Like &lt;3</button>
+//     </div>
+function addLastToyListner(){
+  let toys = document.querySelectorAll(".card")
+  toys[toys.length - 1].addEventListener('click', like)
+}
 
 
 
@@ -31,8 +56,8 @@ function getToys(){
   fetch('http://localhost:3000/toys')
   .then(response => response.json())
   .then(response => {
-    console.log(response)
     renderToys(response)
+    addLikeListeners()
   });
 }
 
@@ -41,8 +66,8 @@ function renderToys(toys){
   let toyHtml = ''
     toys.forEach(toy =>{
       toyHtml += 
-      `<div class="card">
-          <h2 data-id= "${toy.id}" >${toy.name}</h2>
+      `<div class="card" data-id= "${toy.id}">
+          <h2>${toy.name}</h2>
           <img src= "${toy.image}" class="toy-avatar" />
           <p> Likes: ${toy.likes} </p>
           <button class="like-btn">Like <3</button>
@@ -50,21 +75,22 @@ function renderToys(toys){
     });
     const toyCollection = document.querySelector("#toy-collection");
     toyCollection.innerHTML = toyHtml;
+
 }
 
 
 
 function renderIndividualToy(toy){
   let toyHtml = 
-    `<div class="card">
-        <h2 data-id= "${toy.id}" >${toy.name}</h2>
+    `<div class="card  data-id= "${toy.id}">
+        <h2>${toy.name}</h2>
         <img src= "${toy.image}" class="toy-avatar" />
         <p> Likes: ${toy.likes} </p>
         <button class="like-btn">Like <3</button>
     </div> `
     const toyCollection = document.querySelector("#toy-collection");
     toyCollection.innerHTML += toyHtml;
-}
+} 
 
 
 
@@ -72,9 +98,9 @@ function submitToy(event){
   event.preventDefault()
   const toyObject = {
     name : event.target['name'].value,
-    image : event.target['image'].value
+    image : event.target['image'].value,
+    likes : 0
   }
-  console.log(toyObject);
 
   const toyStuff = {
     method : 'POST',
@@ -89,17 +115,31 @@ function submitToy(event){
   .then(response => response.json())
   .then(response => {
     renderIndividualToy(response)
+    addLastToyListner()
   });
+  event.target.reset()
 }
 
 
-{/* 
-  <div class="card">
-      <h2 data-id= ${toy.id} >${toy.name}</h2>
-      <img src= ${toy.image} class="toy-avatar" />
-      <p> ${toy.likes} </p>
-      <button class="like-btn">Like <3</button>
-  </div> 
-*/}
+function like(e){
+  let likes = parseInt(e.target.previousElementSibling.innerText.split(' ')[1]);
+  const toyId = parseInt(e.target.parentNode.dataset.id);
+  const toyStuff = {
+    method : 'PATCH',
+    headers: 
+    {
+      "Content-Type": "application/json",
+      Accept: "application/json"
+    },
+    body: JSON.stringify({
+      "likes": likes + 1
+    })
+  }
+  fetch(`http://localhost:3000/toys/${toyId}`, toyStuff)
+  .then(response => response.json())
+  .then(response => {
+    console.log(response)
+    e.target.previousElementSibling.innerText = `Likes: ${response.likes}`
+  });
+}
 
-//add event listener to like
