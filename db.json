@@ -10,7 +10,7 @@
       "id": 2,
       "name": "Buzz Lightyear",
       "image": "http://www.pngmart.com/files/6/Buzz-Lightyear-PNG-Transparent-Picture.png",
-      "likes": 8
+      "likes": 14
     },
     {
       "id": 3,
@@ -22,7 +22,7 @@
       "id": 4,
       "name": "Slinky Dog",
       "image": "https://www.freeiconspng.com/uploads/slinky-png-transparent-1.png",
-      "likes": 4
+      "likes": 14
     },
     {
       "id": 5,
@@ -47,6 +47,54 @@
       "name": "Little Green Men",
       "image": "http://www.pngmart.com/files/3/Toy-Story-Alien-PNG-File.png",
       "likes": -2
+    },
+    {
+      "name": "Foxy",
+      "image": "https://cdn.shopify.com/s/files/1/1796/6745/products/FoxyPlush.png?v=1588050276",
+      "likes": 0,
+      "id": 9
+    },
+    {
+      "name": "Gz",
+      "image": "https://s7d2.scene7.com/is/image/PetSmart/5279001",
+      "likes": 0,
+      "id": 10
+    },
+    {
+      "name": "Kng",
+      "image": "https://assets.petco.com/petco/image/upload/f_auto,q_auto/2330353-center-1",
+      "likes": 5,
+      "id": 11
+    },
+    {
+      "name": "Ses",
+      "image": "https://stockx.imgix.net/products/streetwear/Kaws-Sesame-Street-Uniqlo-Elmo-Plush-Toy-Red.png?fit=fill&bg=FFFFFF&w=300&h=214&auto=format,compress&q=90&dpr=2&trim=color&updated_at=1542407703",
+      "likes": 7,
+      "id": 12
+    },
+    {
+      "name": "Spider",
+      "image": "https://www.fashionbug.lk/wp-content/uploads/2020/03/081600200043-C2_Soft-Toys_Sri-Lanka1.jpg",
+      "likes": 7,
+      "id": 13
+    },
+    {
+      "name": "T",
+      "image": "https://cdn-ssl.s7.disneystore.com/is/image/DisneyShopping/1231055502526",
+      "likes": 6,
+      "id": 14
+    },
+    {
+      "name": "Bla",
+      "image": "https://cdn.shopify.com/s/files/1/1552/9821/products/20200728_120346_1_620x.jpg?v=1596471795",
+      "likes": 5,
+      "id": 15
+    },
+    {
+      "name": "M",
+      "image": "https://i.pinimg.com/564x/95/3f/1f/953f1f8496f34f6371f5c5f0137cd9e6.jpg",
+      "likes": 15,
+      "id": 16
     }
   ]
 }
