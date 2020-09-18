@@ -30,7 +30,6 @@ fetch(`http://localhost:3000/toys/${toyId}`, reqObj)
   })
 }
 
-
 function fetchToys(){ 
   fetch('http://localhost:3000/toys')
     .then(response => response.json())
@@ -50,7 +49,6 @@ function fetchToys(){
       })  
     })
 }
-
 
 function addNewToy(){
   newToyForm.addEventListener('submit', function(event){
@@ -87,10 +85,6 @@ function addNewToy(){
   })
 }
 
-
-
-
-
 // Event Listeners
 addBtn.addEventListener("click", () => {
   // hide & seek with the form
@@ -102,8 +96,6 @@ addBtn.addEventListener("click", () => {
   }
 });
 
-
- 
 // Invoked Functions
 addNewToy()
 fetchToys()
